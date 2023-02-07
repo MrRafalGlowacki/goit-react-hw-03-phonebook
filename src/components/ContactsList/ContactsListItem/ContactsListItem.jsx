@@ -3,38 +3,32 @@ import PropTypes from 'prop-types';
 import css from './ContactsListItem.module.css';
 
 export class ContactsListItem extends Component {
+  componentWillUnmount() {
+    this.props.willUnmount(this.props.name);
+  }
   render() {
-    const { contactList, filter, removeContact } = this.props;
-    const list = contactList
-      .filter(contact =>
-        contact.name.toLowerCase().includes(filter.toLowerCase())
-      )
-      .map(contact => (
-        <li key={contact.id} className={css.item}>
-          <span className={css.name}>
-            {contact.name}: {contact.number}
-          </span>{' '}
-          <button
-            type="button"
-            className={css.button}
-            onClick={() => removeContact(contact.id)}
-          >
-            X
-          </button>
-        </li>
-      ));
+    const { id, name, number, removeContact } = this.props;
 
-    return <ul className={css.container}>{list}</ul>;
+    return (
+      <li key={id} className={css.item}>
+        <span className={css.name}>
+          {name}: {number}
+        </span>{' '}
+        <button
+          type="button"
+          className={css.button}
+          onClick={() => removeContact(id)}
+        >
+          X
+        </button>
+      </li>
+    );
   }
 }
 ContactsListItem.propTypes = {
-  contactList: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string,
-      name: PropTypes.string,
-      number: PropTypes.string,
-    })
-  ),
-  filter: PropTypes.string,
+  id: PropTypes.string,
+  name: PropTypes.string,
+  number: PropTypes.string,
   removeContact: PropTypes.func,
+  willUnmount: PropTypes.bool,
 };

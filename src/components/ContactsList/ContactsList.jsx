@@ -5,23 +5,34 @@ import { ContactFilter } from './ContactFilter/ContactFilter';
 import { ContactsListItem } from './ContactsListItem/ContactsListItem';
 
 export class ContactList extends Component {
+  getFilteredList() {
+    const { contactList, filter } = this.props;
+    return contactList.filter(contact =>
+      contact.name.toLowerCase().includes(filter.toLowerCase())
+    );
+  }
   render() {
-    const { contactList, filter, handleChange, removeContact } =
+    const { contactList, filter, handleChange, removeContact, willUnmount } =
       this.props;
 
+    const list = this.getFilteredList().map(contact => (
+      <ContactsListItem
+        key={contact.id}
+        id={contact.id}
+        name={contact.name}
+        number={contact.number}
+        removeContact={removeContact}
+        filter={filter}
+        willUnmount={willUnmount}
+      />
+    ));
     return (
       <>
         <h3 className={css.title}>Contacts</h3>
         {contactList.length > 0 && (
           <ContactFilter filter={filter} handleChange={handleChange} />
         )}
-        {contactList.length > 0 && (
-          <ContactsListItem
-            contactList={contactList}
-            filter={filter}
-            removeContact={removeContact}
-          />
-        )}
+        {contactList.length > 0 && <ul className={css.container}>{list}</ul>}
       </>
     );
   }
@@ -38,4 +49,5 @@ ContactList.propTypes = {
   filter: PropTypes.string,
   handleChange: PropTypes.func,
   removeContact: PropTypes.func,
+  willUnmount: PropTypes.bool,
 };

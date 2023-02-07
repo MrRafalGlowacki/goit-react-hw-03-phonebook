@@ -7,9 +7,6 @@
   display: flex;
   justify-content: space-between;
 }
-.container {
-  max-width: 300px;
-}
 .button {
   border: none;
   width: 30px;
