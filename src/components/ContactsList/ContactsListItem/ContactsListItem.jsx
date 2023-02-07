@@ -30,5 +30,5 @@ ContactsListItem.propTypes = {
   name: PropTypes.string,
   number: PropTypes.string,
   removeContact: PropTypes.func,
-  willUnmount: PropTypes.bool,
+  willUnmount: PropTypes.func,
 };

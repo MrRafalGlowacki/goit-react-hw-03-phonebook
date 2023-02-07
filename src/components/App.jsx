@@ -13,7 +13,7 @@ export class App extends Component {
     if (this.state.filter !== '') {
       return;
     } else {
-      alert(`${name}Is removed from your contacts`);
+      alert(`${name} is removed from your contacts`);
     }
   };
   componentDidUpdate(prevState) {

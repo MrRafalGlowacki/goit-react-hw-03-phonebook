@@ -49,5 +49,5 @@ ContactList.propTypes = {
   filter: PropTypes.string,
   handleChange: PropTypes.func,
   removeContact: PropTypes.func,
-  willUnmount: PropTypes.bool,
+  willUnmount: PropTypes.func,
 };
