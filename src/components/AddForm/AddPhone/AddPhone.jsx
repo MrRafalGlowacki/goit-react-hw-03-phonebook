@@ -4,14 +4,14 @@ import css from './AddPhone.module.css';
 
 export class AddPhone extends Component {
   render() {
-    const { handleChange, number } = this.props;
+    const { onChange, number } = this.props;
     return (
       <>
         <label htmlFor="number" className={css.number}>
           Number
         </label>
         <input
-          onChange={handleChange}
+          onChange={onChange}
           autoComplete="off"
           type="tel"
           name="number"
@@ -27,6 +27,6 @@ export class AddPhone extends Component {
 }
 
 AddPhone.propTypes = {
-  handleChange: PropTypes.func,
+  onChange: PropTypes.func,
   number: PropTypes.string,
 };

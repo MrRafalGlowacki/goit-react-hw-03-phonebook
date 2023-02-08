@@ -10,14 +10,14 @@ export class AddForm extends Component {
     number: '',
   };
   render() {
-    const { handleChange, handleSubmit, name, number } = this.props;
+    const { onChange, onSubmit, name, number } = this.props;
 
     return (
       <>
         <h2 className={css.title}>Phonebook</h2>
-        <form className={css.form} onSubmit={handleSubmit}>
-          <AddName handleChange={handleChange} name={name} />
-          <AddPhone handleChange={handleChange} number={number} />
+        <form className={css.form} onSubmit={onSubmit}>
+          <AddName onChange={onChange} name={name} />
+          <AddPhone onChange={onChange} number={number} />
           <button type="submit" className={css.button}>
             Add contact
           </button>
@@ -28,8 +28,8 @@ export class AddForm extends Component {
 }
 
 AddForm.propTypes = {
-  handleChange: PropTypes.func,
-  handleSubmit: PropTypes.func,
+  onChange: PropTypes.func,
+  onSubmit: PropTypes.func,
   name: PropTypes.string,
   number: PropTypes.string,
 };

@@ -12,7 +12,7 @@ export class ContactList extends Component {
     );
   }
   render() {
-    const { contactList, filter, handleChange, removeContact, willUnmount } =
+    const { contactList, filter, onChange, onContactRemove, onUnmount } =
       this.props;
 
     const list = this.getFilteredList().map(contact => (
@@ -21,16 +21,16 @@ export class ContactList extends Component {
         id={contact.id}
         name={contact.name}
         number={contact.number}
-        removeContact={removeContact}
+        onContactRemove={onContactRemove}
         filter={filter}
-        willUnmount={willUnmount}
+        onUnmount={onUnmount}
       />
     ));
     return (
       <>
         <h3 className={css.title}>Contacts</h3>
         {contactList.length > 0 && (
-          <ContactFilter filter={filter} handleChange={handleChange} />
+          <ContactFilter filter={filter} onChange={onChange} />
         )}
         {contactList.length > 0 && <ul className={css.container}>{list}</ul>}
       </>
@@ -47,7 +47,7 @@ ContactList.propTypes = {
     })
   ),
   filter: PropTypes.string,
-  handleChange: PropTypes.func,
-  removeContact: PropTypes.func,
-  willUnmount: PropTypes.func,
+  onChange: PropTypes.func,
+  onContactRemove: PropTypes.func,
+  onUnmount: PropTypes.func,
 };

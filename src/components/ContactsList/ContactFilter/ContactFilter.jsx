@@ -4,13 +4,13 @@ import css from './ContactFilter.module.css';
 
 export class ContactFilter extends Component {
   render() {
-    const { filter, handleChange } = this.props;
+    const { filter, onChange } = this.props;
     return (
       <>
         <p className={css.filter}>Find contacts by name</p>
         <input
           className={css.filter}
-          onChange={handleChange}
+          onChange={onChange}
           autoComplete="off"
           type="text"
           name="filter"
@@ -23,5 +23,5 @@ export class ContactFilter extends Component {
 }
 ContactFilter.propTypes = {
   filter: PropTypes.string,
-  handleChange: PropTypes.func,
+  onChange: PropTypes.func,
 };

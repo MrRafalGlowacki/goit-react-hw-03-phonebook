@@ -4,14 +4,14 @@ import css from './AddName.module.css';
 
 export class AddName extends Component {
   render() {
-    const { handleChange, name } = this.props;
+    const { onChange, name } = this.props;
     return (
       <>
         <label htmlFor="name" className={css.name}>
           Name
         </label>
         <input
-          onChange={handleChange}
+          onChange={onChange}
           autoComplete="off"
           placeholder="Enter Name"
           type="text"
@@ -27,6 +27,6 @@ export class AddName extends Component {
 }
 
 AddName.propTypes = {
-  handleChange: PropTypes.func,
+  onChange: PropTypes.func,
   name: PropTypes.string,
 };

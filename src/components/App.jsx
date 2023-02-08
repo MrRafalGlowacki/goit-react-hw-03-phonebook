@@ -66,17 +66,17 @@ export class App extends Component {
     return (
       <>
         <AddForm
-          handleChange={this.handleChange}
-          handleSubmit={this.handleSubmit}
+          onChange={this.handleChange}
+          onSubmit={this.handleSubmit}
           name={this.state.name}
           number={this.state.number}
         />
         <ContactList
           contactList={this.state.contacts}
           filter={this.state.filter}
-          handleChange={this.handleChange}
-          removeContact={this.handleRemoveContact}
-          willUnmount={this.handleContactWillUnmount}
+          onChange={this.handleChange}
+          onContactRemove={this.handleRemoveContact}
+          onUnmount={this.handleContactWillUnmount}
         />
       </>
     );

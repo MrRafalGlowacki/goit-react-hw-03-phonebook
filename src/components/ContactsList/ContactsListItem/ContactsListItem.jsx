@@ -4,10 +4,10 @@ import css from './ContactsListItem.module.css';
 
 export class ContactsListItem extends Component {
   componentWillUnmount() {
-    this.props.willUnmount(this.props.name);
+    this.props.onUnmount(this.props.name);
   }
   render() {
-    const { id, name, number, removeContact } = this.props;
+    const { id, name, number, onContactRemove } = this.props;
 
     return (
       <li key={id} className={css.item}>
@@ -17,7 +17,7 @@ export class ContactsListItem extends Component {
         <button
           type="button"
           className={css.button}
-          onClick={() => removeContact(id)}
+          onClick={() => onContactRemove(id)}
         >
           X
         </button>
@@ -29,6 +29,6 @@ ContactsListItem.propTypes = {
   id: PropTypes.string,
   name: PropTypes.string,
   number: PropTypes.string,
-  removeContact: PropTypes.func,
-  willUnmount: PropTypes.func,
+  onContactRemove: PropTypes.func,
+  onUnmount: PropTypes.func,
 };
